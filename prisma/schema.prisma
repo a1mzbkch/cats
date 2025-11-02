@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  userName  String
+  email     String   @unique
+  password  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  favorites Favorite[] 
+}
+
+model ResetPassword {
+  id        String   @id @default(uuid())
+  email     String
+  code      String
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
+model BlacklistedToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model Cats {
+  id        String   @id @default(uuid())
+  image     String?
+  name      String
+  color     String
+  age       Int
+  paws      Int
+  price     Int
+  sale      Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  favorites Favorite[]  
+}
+
+model Favorite {
+  id        String   @id @default(uuid())
+  userId    String
+  catId     String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+  cat  Cats @relation(fields: [catId], references: [id])
+}
+

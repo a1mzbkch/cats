@@ -1,0 +1,21 @@
+import { Router } from "express";
+import cors from "cors";
+import authRoutes from "../modules/auth/auth.routes";
+import catsRoutes from "../modules/cats/cats.routes";
+import favoriteRoutes from "../modules/favorite/favorite.routes";
+
+const globalRouter = Router();
+
+const corsConfig = {
+  origin: [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://localhost:3002",
+  ],
+};
+
+globalRouter.use("/auth", cors(corsConfig), authRoutes);
+globalRouter.use("/shop", cors(corsConfig), catsRoutes);
+globalRouter.use("/shop", cors(corsConfig), favoriteRoutes);
+
+export default globalRouter;
