@@ -9,6 +9,7 @@ const buildServer = () => {
 
   server.get("/", (req, res) =>
     res.status(200).json({
+      success: true,
       message: "Добро пожаловать на сайт по продаже котов",
     })
   );

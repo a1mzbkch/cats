@@ -8,13 +8,13 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id        String     @id @default(uuid())
   userName  String
-  email     String   @unique
+  email     String     @unique
   password  String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  favorites Favorite[] 
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  favorites Favorite[]
 }
 
 model ResetPassword {
@@ -32,17 +32,17 @@ model BlacklistedToken {
 }
 
 model Cats {
-  id        String   @id @default(uuid())
+  id        String     @id @default(uuid())
   image     String?
   name      String
   color     String
   age       Int
   paws      Int
   price     Int
-  sale      Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  favorites Favorite[]  
+  sale      Int        @default(0)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  favorites Favorite[]
 }
 
 model Favorite {
@@ -54,4 +54,3 @@ model Favorite {
   user User @relation(fields: [userId], references: [id])
   cat  Cats @relation(fields: [catId], references: [id])
 }
-

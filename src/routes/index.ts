@@ -11,6 +11,7 @@ const corsConfig = {
     "http://localhost:3000",
     "http://localhost:3001",
     "http://localhost:3002",
+    "https://cats-front-cnq4.vercel.app/",
   ],
 };
 
