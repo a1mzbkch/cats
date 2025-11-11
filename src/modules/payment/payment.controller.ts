@@ -77,7 +77,7 @@ export const stripeWebhook = async (req: Request, res: Response) => {
     if (catId) {
       await prisma.cats.update({
         where: { id: catId },
-        data: { status: "sold" },
+        data: { status: "sold" } as any,
       });
     }
 
