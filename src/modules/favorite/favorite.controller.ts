@@ -4,7 +4,6 @@ import prisma from "../../config/prisma";
 const addFavorite = async (req: Request, res: Response) => {
   try {
     const { userId, catId } = req.body;
-    
 
     const findCat = await prisma.favorite.findFirst({
       where: { userId, catId },

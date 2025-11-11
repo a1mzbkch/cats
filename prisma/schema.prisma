@@ -40,6 +40,7 @@ model Cats {
   paws      Int
   price     Int
   sale      Int        @default(0)
+  status    String     @default("available")
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   favorites Favorite[]
